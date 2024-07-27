@@ -28,10 +28,27 @@ const obj = {
   },
 };
 
-const obj2 = deepCopy(obj)
-obj2.a = '4'
-obj2.c.ab = [9,8,7]
-obj2.c.ac.aaa = '444'
+let obj2 = Object.assign({}, obj);  // 1 level
+let obj3 = { ...obj };              // 1 level
 
-console.log(obj)
-console.log(obj2);
+obj.a = "3";
+obj.c.ac.aaa = "114";
+
+// console.log(obj, obj2, obj3);
+
+
+const obj4 = deepCopy(obj);         // all levels
+obj4.a = "4";
+obj4.c.ab = [9, 8, 7];
+obj4.c.ac.aaa = "444";
+
+// console.log(obj);
+// console.log(obj4);
+
+const obj5 = JSON.parse(JSON.stringify(obj)); // all levels
+obj5.a = "5";
+obj5.c.ab = [6, 7];
+obj5.c.ac.aaa = "777";
+
+console.log(obj);
+console.log(obj5);
